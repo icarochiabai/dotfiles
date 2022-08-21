@@ -1,0 +1,139 @@
+// waybar config
+// 111121
+
+{
+"layer": "top",
+"position": "top",
+"modules-left": ["idle_inhibitor", "cpu", "temperature", "memory", "disk", "pulseaudio", "backlight", "custom/cap-left"],
+"modules-center": ["wlr/workspaces"],
+"modules-right": ["custom/cap-right", "custom/weather", "custom/vpn", "network", "clock", "battery"],
+"wlr/window": {
+},
+"custom/weather": {
+  "tooltip": false,
+  "min-length": 5,
+  "exec": "curl 'https://wttr.in/?m&format='%t''",
+  "interval": 3600,
+},
+"battery": {
+  "min-length": 5,
+  "states": {
+  "full": 90,
+  "warning": 30,
+  "critical": 15,
+  },
+  "tooltip": false,
+  "full-at": 95,
+  "format-plugged": "{icon} {capacity}%",
+  "format-charging": "{icon} {capacity}%",
+  "format": "{icon} {capacity}%",
+  "format-alt": "{time} {icon}",
+  "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+},
+"clock": {
+  "format": "{:%b %d    %H:%M:%S}",
+  "tooltip": false,
+  "interval": 1,
+  "min-length": 18,
+},
+"custom/offswitch": {
+	"tooltip": false,
+  "format": "",
+  "interval": "once",
+  "on-click": "systemctl poweroff",
+},
+"network": {
+  "interval": 2,
+  "format-wifi": "{essid} ({signalStrength}%)  ",
+  "format-ethernet": "{ipaddr}/{cidr} ",
+  "tooltip-format": "{ifname} via {gwaddr} ",
+  "format-linked": "{ifname} (No IP) ",
+  "format-disconnected": "Disconnected ⚠",
+  "format-alt": "{ifname}: {ipaddr}/{cidr}",
+  "format-disabled": "",
+  "tooltip": false,
+  "min-length": 6,
+},
+"custom/vpn": {
+    "format": " VPN",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json",
+    "interval": 2
+},
+"pulseaudio": {
+  "reverse-scrolling": 1,
+  "tooltip": false,
+  "min-length": 5,
+  "format": "{icon}  {volume}%",
+  "format-bluetooth": "{icon}  {volume}%",
+  "format-muted": "MUTE",
+  "format-icons": {
+  "headphone": "",
+  "headset": "",
+  "default": ["", "", ""],
+  },
+},
+"idle_inhibitor": {
+  "tooltip": false,
+	"format": "{icon}",
+	"format-icons": {
+	"activated": "",
+	"deactivated": "",
+  },
+},
+"cpu": {
+  "interval": 4,
+  "min-length": 6,
+  "format": " {usage}%",
+  "tooltip": false,
+  "states": {
+  "critical": 90,
+  },
+},
+"temperature": {
+  "tooltip": false,
+  "min-length": 5,
+  "critical-threshold": 90,
+  "format": "{icon} {temperatureC}°C",
+  "format-critical": "{icon} {temperatureC}°C",
+  "format-icons": {
+  "default": ["", "", "", "", ""],
+  },
+},
+"memory": {
+  "tooltip": false,
+  "format": " {percentage}%",
+  "states": {
+    "critical":90,
+  },
+  "min-length": 5,
+},
+"disk": {
+  "tooltip": false,
+  "path": "/",
+  "interval": 60,
+  "min-length": 5,
+  "format": " {percentage_used}%",
+  "states": {
+  "critical": 90,
+  },
+},
+"wlr/workspaces": {
+  "tooltip": false,
+  "disable-scroll": true,
+},
+"backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+},
+"custom/cap-left": {
+  "tooltip": false,
+	"format": "",
+},
+"custom/cap-right": {
+  "tooltip": false,
+	"format": "",
+},
+
+}

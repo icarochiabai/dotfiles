@@ -1,0 +1,162 @@
+/* waybar style.css */
+@define-color bgcolor rgba(162, 1, 63, 1);	/* background color */
+@define-color fgcolor #e8d6dd;  /* foreground color */
+@define-color charging #5FD068; /* battery charging color */
+@define-color plugged #acfcad;  /* ac plugged color */
+@define-color critical #B33030; /* critical color */
+@define-color warning #FFD93D;  /* warning color */
+@define-color hover rgba(162, 1, 63, 0.4);    /* mouse hover over workspace color */ 
+@define-color bgfocus #031927;  /* unfocused workspace color background */
+@define-color fgfocus #e8d6dd; /* unfocused workspace color foreground */
+
+/* Reset all styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#waybar {
+	background: transparent;
+	font-family: JetBrainsMono;
+	font-size: large;
+	color: @fgcolor;
+}
+
+#workspaces button {
+	padding-left: 10px;
+	padding-right: 10px;
+  	background: transparent;
+	color: @fgfocus;
+}
+
+#workspaces button.active {
+	color: @fgcolor;
+	border-bottom: 1px solid @bgcolor;
+}
+
+ 
+#workspaces button:hover {
+ 	background: @bgfocus;
+ 	color: @fgcolor;
+ 	transition: none;
+ 	box-shadow: inherit;
+	text-shadow: inherit;
+}
+
+#custom-cap-left, #custom-cap-right {
+	color: @bgcolor;
+	font-size: 24px;
+}
+
+#idle_inhibitor {
+	background: @bgcolor;
+	padding-left: 20px;
+	padding-right: 10px;
+}
+
+#custom-offswitch {
+	background: @bgcolor;
+	padding-right: 20px;
+	padding-left: 10px;
+}
+
+#custom-weather,
+#cpu, 
+#temperature, 
+#memory, 
+#pulseaudio, 
+#custom-vpn,
+#disk,
+#battery, 
+#clock, 
+#network,
+#keyboard-state,
+#backlight{
+	background: @bgcolor;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#disk.critical {
+		color: @critical;
+}
+
+#temperature.critical {                                                           
+		color: @critical;                                                    
+}
+
+#cpu.critical {                                                           
+		color: @critical;                                                    
+}
+
+#memory.critical {                                                           
+		color: @critical;                                                    
+}
+
+@keyframes blink1 {                                                                
+	to {
+		color: @plugged;
+	}
+}
+
+#battery.plugged {
+background-color: @bgcolor;
+/* color:@bgfocus; */
+		animation-name: blink1;                                                          
+		animation-duration: 3s;                                                       
+		animation-timing-function: linear;                                              
+		animation-iteration-count: infinite;                                            
+		animation-direction: alternate;
+}
+
+@keyframes blink2 {
+	to {
+		background-color: @charging;
+		/* color:@bgfocus; */
+	}
+}
+
+#battery.charging {
+/*  background-color: @bgcolor; */
+		animation-name: blink2;                                                          
+		animation-duration: 5s;                                                       
+		animation-timing-function: ease-in-out;                                              
+		animation-iteration-count: infinite;                                            
+		animation-direction: alternate;
+}
+
+@keyframes blink3 {
+	to {
+		background-color: @warning;
+		color:@bgfocus;
+	}
+}
+
+#battery.warning:not(.charging) {
+/*  background-color: @bgcolor; */
+  	animation-name: blink3;
+  	animation-duration: 7s;
+  	animation-timing-function: ease-in-out;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+@keyframes blink4 {
+	to {
+		background-color: @critical;
+		/* color:@bgfocus; */
+	}
+}
+
+#battery.critical:not(.charging) {
+ /* background-color: @bgcolor; */
+  	animation-name: blink4;
+  	animation-duration: 3s;
+  	animation-timing-function: ease-in-out;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+

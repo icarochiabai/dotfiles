@@ -1,18 +1,4 @@
-# Fonts
-font_size 16
-font_family MesloLGS NF
-bold_font auto
-italic_font auto
-bold_italic_font auto
-font_size 14
-
-enable_audio_bell no
-
-background_opacity 0.5
-focus_follows_mouse yes 
-
-
 # BEGIN_KITTY_THEME
-# Alucard
+# Shaman
 include current-theme.conf
 # END_KITTY_THEME

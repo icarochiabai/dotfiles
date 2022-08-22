@@ -1,5 +1,6 @@
 /* waybar style.css */
-@define-color bgcolor rgba(162, 1, 63, 1);	/* background color */
+@define-color bgcolor rgba(3, 25, 39, 0.4);	/* background color */
+@define-color bgcolorhover rgba(3,25,39,0.8);
 @define-color fgcolor #e8d6dd;  /* foreground color */
 @define-color charging #5FD068; /* battery charging color */
 @define-color plugged #acfcad;  /* ac plugged color */
@@ -20,7 +21,7 @@
 
 #waybar {
 	background: transparent;
-	font-family: JetBrainsMono;
+	font-family: MesloLGS NF;
 	font-size: large;
 	color: @fgcolor;
 }
@@ -28,18 +29,19 @@
 #workspaces button {
 	padding-left: 10px;
 	padding-right: 10px;
-  	background: transparent;
+  	background: @bgcolor;
 	color: @fgfocus;
+	margin-left:1rem;
 }
 
 #workspaces button.active {
 	color: @fgcolor;
-	border-bottom: 1px solid @bgcolor;
+	border-bottom: 1px solid #FFF;
 }
 
  
 #workspaces button:hover {
- 	background: @bgfocus;
+ 	background: @bgcolorhover;
  	color: @fgcolor;
  	transition: none;
  	box-shadow: inherit;
@@ -74,7 +76,8 @@
 #clock, 
 #network,
 #keyboard-state,
-#backlight{
+#backlight,
+#custom-screenshot{
 	background: @bgcolor;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -159,4 +162,3 @@ background-color: @bgcolor;
   	animation-iteration-count: infinite;
   	animation-direction: alternate;
 }
-

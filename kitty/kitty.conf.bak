@@ -1,0 +1,13 @@
+# Some details
+	font_size 18
+	font_family MesloLGS NF
+
+	enable_audio_bell no
+
+	confirm_os_window_close 0
+	background_opacity 0.1
+
+# BEGIN_KITTY_THEME
+# Brogrammer
+include current-theme.conf
+# END_KITTY_THEME

@@ -77,7 +77,8 @@
 #network,
 #keyboard-state,
 #backlight,
-#custom-screenshot{
+#custom-screenshot,
+#custom-wf-recorder{
 	background: @bgcolor;
 	padding-left: 10px;
 	padding-right: 10px;

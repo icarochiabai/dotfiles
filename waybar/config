@@ -3,7 +3,7 @@
 "position": "top",
 "modules-left": ["idle_inhibitor", "cpu", "temperature", "memory", "disk", "pulseaudio", "backlight", "custom/cap-left"],
 "modules-center": ["wlr/workspaces"],
-"modules-right": ["custom/cap-right", "custom/screenshot", "custom/weather", "custom/vpn", "network", "clock", "battery"],
+"modules-right": ["custom/cap-right", "custom/wf-recorder", "custom/screenshot", "custom/weather", "custom/vpn", "network", "clock", "battery"],
 "wlr/window": {
 },
 "custom/weather": {
@@ -20,7 +20,7 @@
   "critical": 15,
   },
   "tooltip": false,
-  "full-at": 95,
+  "full-at": 100,
   "format-plugged": "{icon} {capacity}%",
   "format-charging": "{icon} {capacity}%",
   "format": "{icon} {capacity}%",
@@ -128,7 +128,15 @@
 },
 "custom/screenshot":{
 	"format": "",
-	"on-click": "grim ~/Pictures/Screenshots/Screenshot-$(date '+%H:%M:%S_%d-%m-%Y').png",
+	"on-click": "grim ~/Captures/Screenshots/Screenshot-$(date '+%H:%M:%S_%d-%m-%Y').png && grim - | wl-copy",
+    "on-click-right": "grim -g $(slurp) - | wl-copy",
+},
+"custom/wf-recorder": {
+	"format": {},
+	"interval": "once",
+	"exec": "echo '壘'",
+	"tooltip": "false",
+	"exec-if": "pgrep 'wf-recorder'",
 },
 "custom/cap-left": {
   "tooltip": false,
@@ -140,3 +148,4 @@
 },
 
 }
+

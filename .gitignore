@@ -1,0 +1,12 @@
+*
+!*/
+
+!.gitignore
+
+!scripts/*
+!hypr/*
+!waybar/*
+!wofi/*
+!fish/*
+!dunst/*
+!kitty/*

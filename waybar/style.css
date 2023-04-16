@@ -1,0 +1,164 @@
+/* waybar style.css */
+@define-color bgcolor rgba(3, 25, 39, 0);	/* background color */
+@define-color bgcolorhover rgba(3,25,39,0.8);
+@define-color fgcolor rgba(29, 1, 3, 1);  /* foreground color */
+@define-color textcolor #fff;
+
+@define-color charging #5FD068; /* battery charging color */
+@define-color plugged #acfcad;  /* ac plugged color */
+@define-color critical #B33030; /* critical color */
+@define-color warning #FFD93D;  /* warning color */
+
+@define-color hover rgba(162, 1, 63, 0.4);    /* mouse hover over workspace color */ 
+@define-color bgfocus #031927;  /* unfocused workspace color background */
+@define-color fgfocus #e8d6dd; /* unfocused workspace color foreground */
+
+/* Reset all styles */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+#waybar {
+	background: @bgcolor;
+	font-family: MesloLGS NF;
+	font-size: large;
+	color: @textcolor;
+}
+
+#workspaces button {
+	padding-left: 10px;
+	padding-right: 10px;
+  	background: @bgcolor;
+	color: @textcolor;
+}
+
+#workspaces button.active {
+	border-bottom: 1px solid @textcolor;
+}
+ 
+#workspaces button:hover {
+ 	color: @textcolor;
+ 	transition: none;
+ 	box-shadow: inherit;
+	text-shadow: inherit;
+}
+
+#idle_inhibitor,
+#custom-weather,
+#cpu, 
+#temperature, 
+#memory, 
+#pulseaudio, 
+#custom-vpn,
+#disk,
+#battery, 
+#clock, 
+#network,
+#keyboard-state,
+#backlight{
+	background: @fgcolor;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#custom-cap-left, #custom-cap-right {
+	color: @fgcolor;
+	font-size: 24px;
+}
+
+#custom-spotify{
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: rgba(20, 20, 20, 0.4);
+	color:#FFF;
+}
+
+#idle_inhibitor {
+	padding-left: 20px;
+	padding-right: 10px;
+}
+
+
+#disk.critical {
+		color: @critical;
+}
+
+#temperature.critical {                                                           
+		color: @critical;                                                    
+}
+
+#cpu.critical {                                                           
+		color: @critical;                                                    
+}
+
+#memory.critical {                                                           
+		color: @critical;                                                    
+}
+
+@keyframes blink1 {                                                                
+	to {
+		color: @plugged;
+	}
+}
+
+#battery.plugged {
+background-color: @bgcolor;
+/* color:@bgfocus; */
+		animation-name: blink1;                                                          
+		animation-duration: 3s;                                                       
+		animation-timing-function: linear;                                              
+		animation-iteration-count: infinite;                                            
+		animation-direction: alternate;
+}
+
+@keyframes blink2 {
+	to {
+		background-color: @charging;
+		/* color:@bgfocus; */
+	}
+}
+
+#battery.charging {
+/*  background-color: @bgcolor; */
+		animation-name: blink2;                                                          
+		animation-duration: 5s;                                                       
+		animation-timing-function: ease-in-out;                                              
+		animation-iteration-count: infinite;                                            
+		animation-direction: alternate;
+}
+
+@keyframes blink3 {
+	to {
+		background-color: @warning;
+		color:@bgfocus;
+	}
+}
+
+#battery.warning:not(.charging) {
+/*  background-color: @bgcolor; */
+  	animation-name: blink3;
+  	animation-duration: 7s;
+  	animation-timing-function: ease-in-out;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}
+
+@keyframes blink4 {
+	to {
+		background-color: @critical;
+		/* color:@bgfocus; */
+	}
+}
+
+#battery.critical:not(.charging) {
+ /* background-color: @bgcolor; */
+  	animation-name: blink4;
+  	animation-duration: 3s;
+  	animation-timing-function: ease-in-out;
+  	animation-iteration-count: infinite;
+  	animation-direction: alternate;
+}

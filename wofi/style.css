@@ -1,0 +1,48 @@
+window {
+	border-radius:16px;
+	font-family: "MesloLGS NF";
+	font-weight:400;
+	background-color:rgba(8, 8, 8, 0.8);
+}
+
+#text{
+	font-size:16px;
+	color:white;
+}
+
+#text:selected{
+	font-weight:bold;
+}
+
+
+#input {
+	font-size:24px;	
+	font-weight:bold;
+	color:white;
+	padding:16px;
+	background-color:transparent;
+	border-style:none;
+	border-radius:16px 16px 0px 0px;
+}
+
+#entry{
+	background-color:transparent;
+	color:white;
+	
+	padding:8px;
+}
+
+#entry:selected{
+	transition:0.3s ease-out;
+	border-radius:10px;
+}
+
+#inner-box {
+	background-color: transparent;
+	border-radius:16px;
+}
+
+#outer-box{
+	background-color:transparent;
+	border-radius:16px;
+}

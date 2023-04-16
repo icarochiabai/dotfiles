@@ -1,0 +1,139 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["wlr/workspaces","hyprland/window", "cpu", "memory", "disk", "pulseaudio", "backlight", "custom/cap-left"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": ["custom/cap-right", "custom/weather", "network", "clock", "battery"],
+    "hyprland/window": {
+      "format":" {}",
+      "max-length": 10,
+    },
+    "custom/weather": {
+      "tooltip": false,
+      "min-length": 5,
+      "exec": "curl 'https://wttr.in/?m&format='%t''",
+      "format":" {}",
+      "interval": 3600,
+    },
+    "battery": {
+      "min-length": 5,
+      "states": {
+      "full": 90,
+      "warning": 30,
+      "critical": 15,
+      },
+      "tooltip": false,
+      "full-at": 100,
+      "format-plugged": "{icon} {capacity}%",
+      "format-charging": "{icon} {capacity}%",
+      "format": "{icon} {capacity}%",
+      "format-alt": "{icon} {time}",
+      "format-icons": ["", "", "", "", "", "", "", "", "", ""],
+    },
+    "clock": {
+      "format": "{:%b %d  %H:%M:%S}",
+      "tooltip": false,
+      "interval": 1,
+      "min-length": 18,
+    },
+    "network": {
+      "interval": 2,
+      "format-wifi": "{essid} ({signalStrength}%) ",
+      "format-ethernet": "{ipaddr}/{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": "Disconnected ⚠",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}",
+      "format-disabled": "",
+      "tooltip": false,
+      "min-length": 6,
+    },
+    "pulseaudio": {
+      "reverse-scrolling": 1,
+      "tooltip": false,
+      "min-length": 5,
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{icon} {volume}%",
+      "format-muted": "MUTE",
+      "format-icons": {
+      "headphone": "",
+      "headset": "",
+      "default": ["", "", ""],
+      },
+    },
+    "idle_inhibitor": {
+      "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+        "activated": "",
+        "deactivated": "",
+      },
+    },
+    "cpu": {
+      "interval": 4,
+      "min-length": 6,
+      "format": "|  {usage}%",
+      "tooltip": false,
+      "states": {
+      "critical": 90,
+      },
+    },
+    "temperature": {
+      "tooltip": false,
+      "min-length": 5,
+      "critical-threshold": 90,
+      "format": "{icon} {temperatureC}°C",
+      "format-critical": "{icon} {temperatureC}°C",
+      "format-icons": {
+      "default": ["", "", "", "", ""],
+      },
+    },
+    "memory": {
+      "tooltip": false,
+      "format": " {percentage}%",
+      "states": {
+        "critical":90,
+      },
+      "min-length": 5,
+    },
+    "disk": {
+      "tooltip": false,
+      "path": "/",
+      "interval": 60,
+      "min-length": 5,
+      "format": " {percentage_used}%",
+      "states": {
+      "critical": 90,
+      },
+    },
+    "wlr/workspaces": {
+      "format": "{name}",
+      "on-click": "activate",
+    },
+    "wlr/taskbar":{
+      "on-click": "activate",
+    },
+    "backlight": {
+            "format": "{percent}% {icon}",
+            "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up":"light -T 0.99",
+        "on-scroll-down":"light -T 1.01",
+    },
+    "custom/cap-left": {
+      "tooltip": false,
+        "format": "",
+    },
+    "custom/cap-right": {
+      "tooltip": false,
+        "format": "",
+    },
+    "custom/spotify": {
+      "exec": "/usr/bin/python3 ~/.config/waybar/scripts/mediaplayer.py --player spotify",
+      "format": "  {} ",
+      "return-type": "json",
+      "on-click": "playerctl play-pause",
+  }
+    
+}
+    
+    
